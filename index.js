@@ -56,6 +56,7 @@ const injectedData = `<script>{
       console.log('is latest', latest)
       if (!latest) {
         storage[this.__proto__.constructor.name].forEach(el => el.remove())
+        storage[this.__proto__.constructor.name] = []
         latest = true
       }
       storage[this.__proto__.constructor.name] = values ? [...values, this.element] : [ this.element ]
