@@ -6,7 +6,7 @@
     get styleSheet() {
       return `
         :scope {
-          color: blue;
+          color: green;
         }
       `;
     }

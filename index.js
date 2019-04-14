@@ -40,7 +40,7 @@ wss.on('connection', (ws) => {
   ws.on('message', (message) => {
     console.log('received: %s', message)
   })
-  ws.send('HRM Client is Ready')
+  ws.send('HMR Client is Ready')
 })
 
 const injectedData = `<script>{
@@ -63,8 +63,8 @@ const injectedData = `<script>{
   }
 
   socket.addEventListener('open', (event) => {
-    socket.send('[HRM] is Ready');
-    console.log('[HRM] Start')
+    socket.send('[HMR] is Ready');
+    console.log('[HMR] Start')
   });
   socket.addEventListener('message', function (event) {
     // Simple Live Reload
@@ -78,11 +78,11 @@ const injectedData = `<script>{
     if (data.type === 'html') {
       document.write(data.content);
       document.close();
-      console.log('[HRM] updated HTML');
+      console.log('[HMR] updated HTML');
     } else if (data.type === 'js') {
       latest = false
       eval(data.content)
-      console.log('[HRM] updated JS');
+      console.log('[HMR] updated JS');
     } else if (data.type === 'css') {
       const host = location.host
       document.querySelectorAll('link[rel="stylesheet"]').forEach(el => {
@@ -91,7 +91,7 @@ const injectedData = `<script>{
         if (resource === data.content) el.remove()
       })
       document.head.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="' + data.content + '" />')
-      console.log('[HRM] updated CSS');
+      console.log('[HMR] updated CSS');
     }
     // if (event.data === 'reload') window.location.reload()
   })};
